@@ -19,7 +19,7 @@ exports.refreshToken = function(req, res, next) {
         res.cookie('refreshToken', refreshToken, {
             httpOnly: true,
             sameSite: 'None', secure: true,
-            maxAge: 60 * 1000 //10m
+            maxAge: 24 * 60 * 60 * 1000 //1d
         });
 
         return res.status(204).send({});

@@ -1,0 +1,302 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/3.19.5/swagger-ui.css" >
+    <style>
+        .topbar {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+<div id="swagger-ui"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/3.19.5/swagger-ui-bundle.js"> </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/3.19.5/swagger-ui-standalone-preset.js"> </script>
+<script src="./openapi.js"> </script>
+<script>
+    window.onload = function() {
+        const ui = SwaggerUIBundle({
+            spec: spec,
+            dom_id: '#swagger-ui',
+            deepLinking: true,
+            presets: [
+                SwaggerUIBundle.presets.apis,
+                SwaggerUIStandalonePreset
+            ],
+            plugins: [
+                SwaggerUIBundle.plugins.DownloadUrl
+            ],
+            layout: "StandaloneLayout"
+        })
+
+        window.ui = ui
+    }
+
+    var spec ={
+        "openapi": "3.0.3",
+        "info": {
+            "title": "Test",
+            "description": "Api description for test.",
+            "version": "1.0.0",
+            "contact": {}
+        },
+        "servers": [
+            {
+                "url": "127.0.0.1"
+            }
+        ],
+        "paths": {
+            "/api/v1/login": {
+                "post": {
+                    "tags": [
+                        "user"
+                    ],
+                    "summary": "login",
+                    "description": "login",
+                    "operationId": "login",
+                    "requestBody": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "email": {
+                                            "type": "string",
+                                            "example": "admin@mail.com"
+                                        },
+                                        "password": {
+                                            "type": "string",
+                                            "example": "admin1234"
+                                        }
+                                    }
+                                },
+                                "examples": {
+                                    "login": {
+                                        "value": {
+                                            "email": "admin@mail.com",
+                                            "password": "admin1234"
+                                        }
+                                    },
+                                    "login validation errors": {
+                                        "value": {
+                                            "email": "admin@mail.com",
+                                            "password": "admin1234"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "responses": {
+                        "200": {
+                            "description": ""
+                        }
+                    }
+                }
+            },
+            "/api/v1/register": {
+                "post": {
+                    "tags": [
+                        "user"
+                    ],
+                    "summary": "register",
+                    "description": "register",
+                    "operationId": "register",
+                    "requestBody": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "email": {
+                                            "type": "string",
+                                            "example": "admin@mail.com"
+                                        },
+                                        "password": {
+                                            "type": "string",
+                                            "example": "admin1234"
+                                        }
+                                    }
+                                },
+                                "examples": {
+                                    "refresh": {
+                                        "value": {
+                                            "email": "admin@mail.com",
+                                            "password": "admin1234"
+                                        }
+                                    },
+                                    "register": {
+                                        "value": {
+                                            "email": "admin@mail.com",
+                                            "password": "admin1234"
+                                        }
+                                    },
+                                    "register validation errors": {
+                                        "value": {}
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "responses": {
+                        "200": {
+                            "description": ""
+                        }
+                    }
+                }
+            },
+            "/api/v1/products": {
+                "get": {
+                    "tags": [
+                        "products"
+                    ],
+                    "summary": "products",
+                    "description": "products",
+                    "operationId": "products",
+                    "parameters": [
+                        {
+                            "name": "page",
+                            "in": "query",
+                            "schema": {
+                                "type": "string",
+                                "example": "1"
+                            },
+                            "description": "integer"
+                        },
+                        {
+                            "name": "order",
+                            "in": "query",
+                            "schema": {
+                                "type": "string",
+                                "example": "asc"
+                            },
+                            "description": "order asc or desc"
+                        }
+                    ],
+                    "responses": {
+                        "200": {
+                            "description": ""
+                        }
+                    }
+                },
+                "post": {
+                    "tags": [
+                        "products"
+                    ],
+                    "summary": "products",
+                    "description": "products",
+                    "operationId": "products1",
+                    "requestBody": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "email": {
+                                            "type": "string",
+                                            "example": "admin@mail.com"
+                                        },
+                                        "password": {
+                                            "type": "string",
+                                            "example": "admin1234"
+                                        }
+                                    }
+                                },
+                                "examples": {
+                                    "products": {
+                                        "value": {
+                                            "email": "admin@mail.com",
+                                            "password": "admin1234"
+                                        }
+                                    },
+                                    "products validation errors": {
+                                        "value": {
+                                            "email": "admin@mail.com",
+                                            "password": "admin1234"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "responses": {
+                        "200": {
+                            "description": ""
+                        }
+                    }
+                }
+            },
+            "/api/v1/products/1": {
+                "put": {
+                    "tags": [
+                        "products"
+                    ],
+                    "summary": "products",
+                    "description": "products",
+                    "operationId": "products2",
+                    "requestBody": {
+                        "content": {
+                            "multipart/form-data": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "category": {
+                                            "type": "string",
+                                            "example": ""
+                                        },
+                                        "description": {
+                                            "type": "string",
+                                            "example": ""
+                                        },
+                                        "image": {
+                                            "description": "nullable image",
+                                            "type": "string",
+                                            "example": ""
+                                        },
+                                        "name": {
+                                            "type": "string",
+                                            "example": ""
+                                        },
+                                        "price": {
+                                            "type": "string",
+                                            "example": ""
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "responses": {
+                        "200": {
+                            "description": ""
+                        }
+                    }
+                },
+                "delete": {
+                    "tags": [
+                        "products"
+                    ],
+                    "summary": "products",
+                    "description": "products",
+                    "operationId": "products3",
+                    "responses": {
+                        "200": {
+                            "description": ""
+                        }
+                    }
+                }
+            }
+        },
+        "tags": [
+            {
+                "name": "user"
+            },
+            {
+                "name": "products"
+            }
+        ]
+    }
+</script>
+</body>
+</html>
